@@ -84,3 +84,22 @@ a:hover {
     color: var(--linkcolor);
 	text-shadow: -5px 5px 0px #eb6f92, -10px 10px #f6c177, -15px 15px 0px #C3A5E6, -20px 20px 0px #31748f;
 }
+
+.binary-time {
+    margin-bottom: 30px;
+    height: 135px;
+    width: 135px;
+    display: flex;
+    flex-flow: column wrap;
+    flex-direction: column;
+    flex-basis: auto;
+    gap:5px;
+}
+
+.bt-square {
+    border-radius: 5px;
+    background: #26233a;
+    box-shadow: 1px 1px 3px #000000;
+    height: 30px;
+    width: 30px;
+}
