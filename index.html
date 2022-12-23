@@ -1,130 +1,132 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    <link rel="shortcut icon" href="favicon.png" />
-</head>
+    <head>
+        <title>Home</title>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <link rel="shortcut icon" href="favicon.png" />
+    </head>
 
-<body>
-    <div class="everything">
-        <div id="time" class="time"></div>
-        <div id="binary-time" class="binary-time">
-            <div class='bt-square' data-number="0"></div>
-            <div class='bt-square' data-number="1"></div>
-            <div class='bt-square' data-number="2"></div>
-            <div class='bt-square' data-number="3"></div>
-            <div class='bt-square' data-number="4"></div>
-            <div class='bt-square' data-number="5"></div>
-            <div class='bt-square' data-number="6"></div>
-            <div class='bt-square' data-number="7"></div>
-            <div class='bt-square' data-number="8"></div>
-            <div class='bt-square' data-number="9"></div>
-            <div class='bt-square' data-number="10"></div>
-            <div class='bt-square' data-number="11"></div>
-            <div class='bt-square' data-number="12"></div>
-            <div class='bt-square' data-number="13"></div>
-            <div class='bt-square' data-number="14"></div>
-            <div class='bt-square' data-number="15"></div>
-        </div>
-        <form action="https://google.com/search" method="GET">
-            <input autofocus name="q" class="search" type="search" id="search-bar-input" placeholder="" />
-        </form>
-        <div class="box">
-            <div class="link">
-                <ul>
-                    <li><a href="https://mm.stsoft.team">mattermost</a></li>
-                    <li><a href="https://git.stsoft.team">gitlab ST</a></li>
-                    <li><a href="https://gitlab.atomyze.dev">gitlab ATMZ</a></li>
-                    <li><a href="https://github.com">github</a></li>
-                </ul>
+    <body>
+        <div class="everything">
+            <div id="timecontainer">
+                <div id="time" class="time"></div>
+                <div id="binary-time" class="binary-time">
+                    <div class='bt-square' data-number="0"></div>
+                    <div class='bt-square' data-number="1"></div>
+                    <div class='bt-square' data-number="2"></div>
+                    <div class='bt-square' data-number="3"></div>
+                    <div class='bt-square' data-number="4"></div>
+                    <div class='bt-square' data-number="5"></div>
+                    <div class='bt-square' data-number="6"></div>
+                    <div class='bt-square' data-number="7"></div>
+                    <div class='bt-square' data-number="8"></div>
+                    <div class='bt-square' data-number="9"></div>
+                    <div class='bt-square' data-number="10"></div>
+                    <div class='bt-square' data-number="11"></div>
+                    <div class='bt-square' data-number="12"></div>
+                    <div class='bt-square' data-number="13"></div>
+                    <div class='bt-square' data-number="14"></div>
+                    <div class='bt-square' data-number="15"></div>
+                </div>
             </div>
-            <div class="link">
-                <ul>
-                    <li><a href="https://youtube.com">youtube</a></li>
-                    <li><a href="https://soundcloud.com/">soundcloud</a></li>
-                    <li><a href="https://reddit.com">reddit</a></li>
-                    <li><a href="https://stackoverflow.com">stackoverflow</a></li>
-                </ul>
+            <form action="https://google.com/search" method="GET">
+                <input autofocus name="q" class="search" type="search" id="search-bar-input" placeholder="" autocomplete="off"/>
+            </form>
+            <div class="box">
+                <div class="link">
+                    <ul>
+                        <li><a href="https://mm.stsoft.team">mattermost</a></li>
+                        <li><a href="https://git.stsoft.team">gitlab ST</a></li>
+                        <li><a href="https://gitlab.atomyze.dev">gitlab ATMZ</a></li>
+                        <li><a href="https://github.com">github</a></li>
+                    </ul>
+                </div>
+                <div class="link">
+                    <ul>
+                        <li><a href="https://youtube.com">youtube</a></li>
+                        <li><a href="https://soundcloud.com/">soundcloud</a></li>
+                        <li><a href="https://reddit.com">reddit</a></li>
+                        <li><a href="https://stackoverflow.com">stackoverflow</a></li>
+                    </ul>
+                </div>
+                <!-- Feel free to add more divs here -->
             </div>
-            <!-- Feel free to add more divs here -->
         </div>
-    </div>
-    <script>
-        let binary = true;
+        <script>
+         let binary = true;
 
-        function shuffleArray(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
-            }
-        }
+         function shuffleArray(array) {
+             for (let i = array.length - 1; i > 0; i--) {
+                 const j = Math.floor(Math.random() * (i + 1));
+                 [array[i], array[j]] = [array[j], array[i]];
+             }
+         }
 
-        function dec2bin(dec) {
-            return (dec >>> 0).toString(2);
-        }
+         function dec2bin(dec) {
+             return (dec >>> 0).toString(2);
+         }
 
-        function updateClock() {
-            let date = new Date();
-            let hours = date.getHours();
-            let minutes = date.getMinutes();
-            let ampm = hours >= 12 ? "pm" : "am";
-            console.log(dec2bin(hours.toString()[1]))
-            hours = hours % 12;
-            hours = hours ? hours : 12;
-            minutes = minutes < 10 ? "0" + minutes : minutes;
-            let time = hours + ":" + minutes + " " + ampm;
-            document.getElementById("time").innerHTML = time;
-            setTimeout(updateClock, 1000);
-        }
+         function updateClock() {
+             let date = new Date();
+             let hours = date.getHours();
+             let minutes = date.getMinutes();
+             let ampm = hours >= 12 ? "pm" : "am";
+             console.log(dec2bin(hours.toString()[1]))
+             hours = hours % 12;
+             hours = hours ? hours : 12;
+             minutes = minutes < 10 ? "0" + minutes : minutes;
+             let time = hours + ":" + minutes + " " + ampm;
+             document.getElementById("time").innerHTML = time;
+             setTimeout(updateClock, 1000);
+         }
 
-        function clearBinaryClock() {
-            for (let i = 0; i < 16; i++) {
-                document.querySelector(`[data-number="${i}"]`)
-                    .style
-                    .backgroundColor = '#26233a';
-            }
-        }
+         function clearBinaryClock() {
+             for (let i = 0; i < 16; i++) {
+                 document.querySelector(`[data-number="${i}"]`)
+                         .style
+                         .backgroundColor = '#26233a';
+             }
+         }
 
-        function updateBinaryClock() {
-            let date = new Date();
-            let hours = date.getHours();
-            let minutes = date.getMinutes();
-            let colors = ['#eb6f92', '#f6c177', '#c3a5e6', '#31748f'];
-            shuffleArray(colors);
-            clearBinaryClock();
-            for (let i = 0; i < 4; i++) {
-                let target = hours;
-                if (i > 1) {
-                    target = minutes;
-                }
-                if (target.toString().length == 1) {
-                    target = "0"+target.toString();
-                }
-                let bin = dec2bin(target.toString()[i % 2]);
-                let column = (4 * i) + 3;
-                let j = bin.length - 1;
-                while (j >= 0) {
-                    let bit = bin.toString()[j];
-                    if (bit != 0) {
-                        document.querySelector(`[data-number="${column}"]`)
-                            .style
-                            .backgroundColor = colors[i];
-                    }
-                    j--;
-                    column--;
-                }
-            }
-            setTimeout(updateBinaryClock, 1000);
-        }
-        if (binary) {
-            updateBinaryClock();
-        } else {
-            updateClock();
-        }
-    </script>
-</body>
+         function updateBinaryClock() {
+             let date = new Date();
+             let hours = date.getHours();
+             let minutes = date.getMinutes();
+             let colors = ['#eb6f92', '#f6c177', '#c3a5e6', '#31748f'];
+             shuffleArray(colors);
+             clearBinaryClock();
+             for (let i = 0; i < 4; i++) {
+                 let target = hours;
+                 if (i > 1) {
+                     target = minutes;
+                 }
+                 if (target.toString().length == 1) {
+                     target = "0"+target.toString();
+                 }
+                 let bin = dec2bin(target.toString()[i % 2]);
+                 let column = (4 * i) + 3;
+                 let j = bin.length - 1;
+                 while (j >= 0) {
+                     let bit = bin.toString()[j];
+                     if (bit != 0) {
+                         document.querySelector(`[data-number="${column}"]`)
+                                 .style
+                                 .backgroundColor = colors[i];
+                     }
+                     j--;
+                     column--;
+                 }
+             }
+             setTimeout(updateBinaryClock, 1000);
+         }
+         if (binary) {
+             updateBinaryClock();
+         } else {
+             updateClock();
+         }
+        </script>
+    </body>
 
 </html>
